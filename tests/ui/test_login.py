@@ -1,6 +1,8 @@
 # tests/ui/test_login.py
 import pytest
+
 from pages.base_page import BasePage
+
 
 @pytest.mark.ui
 @pytest.mark.smoke

@@ -1,5 +1,4 @@
 # conftest.py
-import pytest
 
 def pytest_configure(config):
     """Register custom markers to avoid pytest warnings."""

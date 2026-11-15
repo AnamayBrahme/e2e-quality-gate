@@ -1,6 +1,7 @@
 # pages/base_page.py
 from playwright.sync_api import Page
 
+
 class BasePage:
     """Base Page class encapsulating common browser interactions with built-in auto-waiting."""
     
