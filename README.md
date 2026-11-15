@@ -1,65 +1,63 @@
-# Automated Risk-Based UI & API Quality Gate
+# 🚀 Hybrid Test Automation & Quality Gate Framework
 
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
-[![Pytest](https://img.shields.io/badge/pytest-8.3.4-orange.svg)](https://docs.pytest.org/)
-[![Playwright](https://img.shields.io/badge/playwright-1.49.0-green.svg)](https://playwright.dev/python/)
-[![CI/CD Pipeline](https://github.com/your-username/e2e-quality-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/e2e-quality-gate/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI/CD Quality Gate](https://github.com/AnamayBrahme/e2e-quality-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/AnamayBrahme/e2e-quality-gate/actions/workflows/ci.yml)
+[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/)
+[![Pytest](https://img.shields.io/badge/pytest-8.x-orange.svg)](https://docs.pytest.org/)
+[![Playwright](https://img.shields.io/badge/playwright-1.x-green.svg)](https://playwright.dev/python/)
+[![Ruff](https://img.shields.io/badge/linter-ruff-red.svg)](https://github.com/astral-sh/ruff)
+[![ISTQB CTFL v4.0](https://img.shields.io/badge/ISTQB-CTFL_v4.0_Aligned-purple.svg)](https://www.istqb.org/)
 
-A hybrid, enterprise-grade test automation framework built in Python that enforces an automated **Definition of Done (DoD)** quality gate for multi-user e-commerce platforms. It combines fast REST API integration tests with resilient UI end-to-end tests, bypassing slow login bottlenecks via API-injected authentication states.
-
----
-
-## 🚀 Problem Statement & Solution
-
-* **The Problem:** In fast-moving Agile e-commerce releases, relying exclusively on slow UI E2E test suites creates pipeline bottlenecks and flaky CI builds. Furthermore, backend REST APIs are often left vulnerable to authorization bypasses (`401`/`403`), unexpected payload states, and poor error handling (`400`).
-* **The Solution:** A hybrid testing architecture that uses **API-driven test setup** (injecting auth tokens directly into browser local storage) to reduce UI test execution time by 60%, paired with a robust REST API suite and strict static code analysis (`ruff`), running automatically on every Pull Request via **GitHub Actions**.
+A production-grade, portfolio-ready hybrid **UI + API Test Automation Framework** engineered with Python, Pytest, Playwright, Requests, and GitHub Actions. Built following rigorous Agile Scrum delivery principles (6 Sprints) and aligned with ISTQB CTFL v4.0 software testing standards.
 
 ---
 
-## 🛠️ Tech Stack
-
-* **Language:** Python 3.11+
-* **Test Runner:** Pytest
-* **UI Automation:** Playwright for Python (Auto-waiting, tracing, parallel execution)
-* **API Testing:** Requests & Pydantic (Data validation and schema assertions)
-* **Code Quality:** Ruff (Fast Python linter and code formatter)
-* **CI/CD:** GitHub Actions (Automated PR quality gates)
-* **Target Apps:** SauceDemo (`saucedemo.com`) & Restful-Booker (`restful-booker.herokuapp.com`)
-
----
-
-## 📁 Project Architecture
+## 🏗️ Architecture & Tech Stack
 
 ```text
 e2e-quality-gate/
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml                 # GitHub Actions CI/CD Quality Gate
-│
-├── docs/                          # Sprint documentation & ISTQB mapping logs
-│   ├── sprint-1.md
-│   ├── sprint-2.md
-│   └── ...
-│
-├── pages/                         # Page Object Model (POM) for UI tests
-│   ├── __init__.py
+├── .github/workflows/ci.yml   # Automated GitHub Actions CI pipeline
+├── pages/                     # Playwright Page Object Model (POM) classes
 │   ├── base_page.py
 │   ├── login_page.py
-│   └── inventory_page.py
-│
-├── tests/
-│   ├── api/                       # REST API integration & security tests
-│   │   └── test_auth.py
-│   └── ui/                        # Playwright browser end-to-end tests
-│       └── test_login.py
-│
-├── utils/                         # Shared helper clients and fixtures
-│   └── api_client.py
-│
-├── conftest.py                    # Global Pytest fixtures & CLI hooks
-├── pytest.ini                     # Pytest configuration & custom markers
-├── pyproject.toml                 # Ruff linter configuration
-├── requirements.txt               # Project dependencies
-└── README.md
+│   ├── inventory_page.py
+│   ├── cart_page.py
+│   └── checkout_page.py
+├── tests/                     # Test Suites (API & UI)
+│   ├── api/                   # RESTful Booker API & CRUD tests
+│   └── ui/                    # SauceDemo UI & E2E Checkout flows
+├── utils/                     # Reusable API Client wrappers
+├── docs/                      # Agile Sprints 1-6 Documentation & Risk Matrices
+├── requirements.txt           # Pinned dependencies
+├── pytest.ini                 # Global pytest configuration & markers
+└── .gitignore                 # Enterprise-grade exclusions
+
+
+## 🛠️ Target Applications Tested
+1. **UI Automation:** **SauceDemo** ([https://www.saucedemo.com](https://www.saucedemo.com)) — Modern mock e-commerce web application.
+2. **API Automation:** **Restful Booker** ([https://restful-booker.herokuapp.com](https://restful-booker.herokuapp.com)) — Sandbox REST API for backend validation.
+
+---
+
+## ⚡ Quickstart Guide
+
+### 1. Clone & Setup Environment
+```bash
+git clone [https://github.com/AnamayBrahme/e2e-quality-gate.git](https://github.com/AnamayBrahme/e2e-quality-gate.git)
+cd e2e-quality-gate
+
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+pip install -r requirements.txt
+playwright install chromium
+
+### 2. Run Quality Checks & Tests
+```bash
+# Run linting check
+ruff check .
+
+# Run API tests
+pytest -m api -v
+
+# Run UI tests
+pytest -m ui -v
