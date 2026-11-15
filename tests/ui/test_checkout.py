@@ -1,16 +1,20 @@
 import pytest
+
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
-from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 
 
 @pytest.mark.ui
 @pytest.mark.smoke
+
 def test_end_to_end_purchase_flow(page):
-    """Verify standard user can log in, add item to cart, and complete checkout successfully."""
+    """Verify standard user can log in, add item to cart,
+
+    and complete checkout successfully.
+    """
     login_page = LoginPage(page)
-    inventory_page = InventoryPage(page)
+
     cart_page = CartPage(page)
     checkout_page = CheckoutPage(page)
 

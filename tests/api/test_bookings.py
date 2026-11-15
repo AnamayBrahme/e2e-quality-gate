@@ -55,7 +55,9 @@ def test_update_booking_with_auth(api_client, auth_token, sample_booking):
     updated_payload["firstname"] = "Alexander"
 
     headers = {"Cookie": f"token={auth_token}"}
-    update_res = api_client.put(f"/booking/{booking_id}", json=updated_payload, headers=headers)
+    update_res = api_client.put(
+        f"/booking/{booking_id}", json=updated_payload, headers=headers
+    )
 
     assert update_res.status_code == 200
     assert update_res.json()["firstname"] == "Alexander"
@@ -69,8 +71,9 @@ def test_update_booking_unauthorized(api_client, sample_booking):
 
     # Attempt update without auth cookie/token
     update_res = api_client.put(f"/booking/{booking_id}", json=sample_booking)
-    assert update_res.status_code in [401, 403], f"Expected 401/403, got {update_res.status_code}"
-
+    assert update_res.status_code in [401, 403], (
+        f"Expected 401/403, got {update_res.status_code}"
+    )
 
 @pytest.mark.api
 def test_delete_booking(api_client, auth_token, sample_booking):

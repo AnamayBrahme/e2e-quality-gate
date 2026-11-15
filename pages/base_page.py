@@ -3,7 +3,10 @@ from playwright.sync_api import Page
 
 
 class BasePage:
-    """Base Page class encapsulating common browser interactions with built-in auto-waiting."""
+    """Base Page class encapsulating common browser interactions
+
+    with built-in auto-waiting.
+    """
     
     def __init__(self, page: Page):
         self.page = page

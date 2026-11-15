@@ -32,7 +32,10 @@ def test_invalid_authentication_bad_credentials():
 
 @pytest.mark.api
 def test_authentication_missing_parameters():
-    """Verify server handles missing payload keys gracefully (Boundary Value Analysis)."""
+    """Verify server handles missing payload keys gracefully
+
+    (Boundary Value Analysis).
+    """
     payload = {"username": "admin"}  # Missing password field
     response = requests.post(f"{BASE_URL}/auth", json=payload)
 
